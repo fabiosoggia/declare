@@ -16,12 +16,16 @@ module.exports = function(grunt) {
 				flatten: true,
 				ext: ".min.js"
 			}
+		},
+		qunit: {
+			all: ["tests/*.html"]
 		}
 	});
 
 	grunt.loadNpmTasks("grunt-newer");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-contrib-qunit");
 
 	grunt.registerTask("default", ["jshint", "newer:uglify"]);
 
