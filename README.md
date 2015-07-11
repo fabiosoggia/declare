@@ -64,15 +64,6 @@ A type is a reference to a constructor function. Example of "primitive" types ar
 You can use your own object types.
 
 
-## Usage with HTML5 Audio/Video
-Include `mediasync.min.js` and `mediasync-html5.min.js`.
-
-```javascript
-var audio = new Audio('sample.mp3');
-var media = new Html5MediaWrapper(audio);
-```
-
-
 ## Contribute
 Feel free to fork me! =)
 
