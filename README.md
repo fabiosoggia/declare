@@ -1,10 +1,8 @@
 # Declare.js
 
-In Javascript, when you declare a function you can't make any restriction about the type of arguments. You always
-have to manual check the type of your arguments. This means that you can call the same function with arguments of
-any type. This may cause unpredictable behavior.
+In Javascript, when you declare a function you can't make any restriction about the type of its arguments. You always have to manually check the type of your arguments during the execution. This means that you can call the same function with arguments of any type. This may cause unpredictable behavior.
 
-For example this function has different results depending to the type its arguments:
+For example this function has different results depending on the type of its arguments:
 
 ```javascript
 function sum(a, b) {
@@ -15,8 +13,7 @@ sum(1, 2);		// 3
 sum(1, "2");	// "12" <- this is not a sum, it's a string concatenation
 ```
 
-Declare.js let you to explicitly declare the type of your arguments. Your function is called only if the arguments
-have the right type. Let's rewrite the example code using Declare.js:
+Declare.js let you to explicitly declare the type of your arguments. Your function is called only if the arguments have the right type. Let's rewrite the example code using Declare.js:
 
 ```javascript
 var sum = declare([Number, Number], function sum(a, b) {
@@ -27,8 +24,7 @@ sum(1, 2);		// 3
 sum(1, "2");	// throws Error("Invalid type for argument (1).")
 ```
 
-Thank to Declare.js you can always trust the arguments of your functions.
-Isn't it simple?
+Thank to Declare.js you can "always" trust the arguments of your functions.
 
 
 ## Installation
