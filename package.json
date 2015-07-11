@@ -1,7 +1,7 @@
 {
 	"name": "DeclareJS",
 	"version": "0.0.1",
-	"description": "Explicitly declare the type of function arguments in your Javascript code.",
+	"description": "Explicitly declare the type of arguments in your Javascript function.",
 	"author": "Fabio Soggia",
 	"devDependencies": {
 		"grunt": "^0.4.5",
