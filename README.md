@@ -36,7 +36,7 @@ Isn't it simple?
 Include `declare.min.js` in your HTML file and you are ready to go.
 
 ```html
-<script type="text/javascript" src="src/declare.js"></script>
+<script type="text/javascript" src="src/declare.min.js"></script>
 ```
 
 
