@@ -55,11 +55,11 @@ Where:
 
 A type is a reference to a constructor function. Example of "primitive" types are:
 
-* Number (window.Number);
-* String (window.String);
-* Boolean (window.Boolean);
-* Object (window.Object);
-* Array (window.Array);
+* `Number` (`window.Number`);
+* `String` (`window.String`);
+* `Boolean` (`window.Boolean`);
+* `Object` (`window.Object`);
+* `Array` (`window.Array`);
 
 You can use your own object types.
 
