@@ -29,22 +29,31 @@
 
 		// PRIMITIVE VALUE CHECKS:
 		// Ex: 1, 2, 3
-		if (type.name === "Number") {
-			if (typeof value === "number") {
+		if (typeof value === "number") {
+			if (type.name === "Number") {
+				return true;
+			}
+			if (type.name === "Object") {
 				return true;
 			}
 		}
 
 		// Ex: "", "a"
-		if (type.name === "String") {
-			if (typeof value === "string") {
+		if (typeof value === "string") {
+			if (type.name === "String") {
+				return true;
+			}
+			if (type.name === "Object") {
 				return true;
 			}
 		}
 
 		// Ex: true, false
-		if (type.name === "Boolean") {
-			if (typeof value === "boolean") {
+		if (typeof value === "boolean") {
+			if (type.name === "Boolean") {
+				return true;
+			}
+			if (type.name === "Object") {
 				return true;
 			}
 		}
