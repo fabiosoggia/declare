@@ -21,7 +21,7 @@ var sum = declare([Number, Number], function sum(a, b) {
 });
 
 sum(1, 2);		// 3
-sum(1, "2");	// throws Error("Invalid type for argument (1).")
+sum(1, "2");	// throws Error("Argument (1) must be Number.")
 ```
 
 Thank to Declare.js you can "always" trust the arguments of your functions.
@@ -58,6 +58,55 @@ A type is a reference to a constructor function. Example of "primitive" types ar
 * `Array` (`window.Array`);
 
 You can use your own object types.
+
+
+## Advanced usage
+
+### Accept any type of argument
+
+```javascript
+var plus = declare([], function plus(a, b) {
+	return a + b;
+});
+
+plus(1, 2);			// 3
+plus("a", "b");		// "ab"
+```
+
+
+### Accept Number only
+
+```javascript
+var sum = declare({ default: Number }, function sum() {
+	var result = 0;
+    for (var i = 0; i < arguments.length; i++) {
+        result += arguments[i];
+    }
+    return result;
+});
+
+sum(1, 2);			// 3
+sum(1, 2, 3);		// 6
+sum(1, "b");		// throws Error("Argument (1) must be Number.")
+```
+
+
+### One string followed by Number only
+
+```javascript
+var sum = declare({ 0: String, default: Number }, function sum(s) {
+	var result = 0;
+    for (var i = 1; i < arguments.length; i++) {
+        result += arguments[i];
+    }
+    return s + result;
+});
+
+sum(1, 2);							// throws Error("Argument (0) must be String.")
+sum("Result = ", 1, 2);				// "Result = 3"
+sum("Result = ", 1, 2, 3);			// "Result = 6"
+sum("Result = ", 1, 2, 3, true);	// throws Error("Argument (4) must be Number.")
+```
 
 
 ## Contribute
