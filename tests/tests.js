@@ -192,3 +192,71 @@ QUnit.test("Custom Types: Child", function(assert) {
 	}, "null in not a Child");
 
 });
+
+QUnit.test("Local Types", function(assert) {
+
+	"use strict";
+
+	var f = declare({}, function (a) {
+		return true;
+	});
+
+	assert.equal(true, f(1), "Accept all types (Number)");
+	assert.equal(true, f(true), "Accept all types (Boolean)");
+
+	f = declare({0: Number}, function (a, b) {
+		return true;
+	});
+	assert.equal(true, f(1), "First argument must be a Number");
+	assert.equal(true, f(1, "b"), "First argument must be a Number");
+	assert.throws(function () {
+		f("a", 1);
+	}, "First argument must be a Number");
+
+	f = declare({1: Number}, function (a, b) {
+		return true;
+	});
+	assert.equal(true, f(1), "Second argument must be a Number");
+	assert.equal(true, f("a", 1), "Second argument must be a Number");
+	assert.throws(function () {
+		f(1, "b");
+	}, "Second argument must be a Number");
+
+	f = declare({0: Number, 1: String}, function (a, b) {
+		return true;
+	});
+	assert.equal(true, f(1, "b", 3), "Any type for undeclare arguments");
+	assert.equal(true, f(1, "b", "c"), "Any type for undeclare arguments");
+	assert.equal(true, f(1, "b", "c", {}), "Any type for undeclare arguments");
+
+});
+
+
+QUnit.test("Default Type", function(assert) {
+
+	"use strict";
+
+	var f = declare({ default: Number }, function (a) {
+		return true;
+	});
+
+	assert.equal(true, f(1), "Numbers only (Correct)");
+	assert.throws(function () {
+		f(true);
+	}, "Numbers only (Wrong)");
+
+
+	f = declare({0: String, default: Number}, function (a, b) {
+		return true;
+	});
+	assert.equal(true, f("a"), "First argument must be a String");
+	assert.throws(function () {
+		f(1);
+	}, "First argument must be a String");
+
+	assert.equal(true, f("a", 1), "Number type for undeclare arguments");
+	assert.throws(function () {
+		f("a", "b");
+	}, "Number type for undeclare arguments");
+
+});
